@@ -17,7 +17,11 @@ class AudioRecorder: NSObject, ObservableObject {
 
     private func setupAudioSession() {
         do {
-            try audioSession.setCategory(.playAndRecord, mode: .default, options: [.defaultToSpeaker, .allowBluetooth])
+            try audioSession.setCategory(
+                .playAndRecord,
+                mode: .default,
+                options: [.defaultToSpeaker, .allowBluetoothHFP]
+            )
             try audioSession.setActive(true)
         } catch {
             print("Failed to set up audio session: \(error.localizedDescription)")
